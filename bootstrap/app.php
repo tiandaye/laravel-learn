@@ -52,4 +52,9 @@ $app->singleton(
 |
 */
 
+// 将错误日志写到mysql
+// $app->configureMonologUsing(function($monolog) use($app) {
+//     $monolog->pushHandler(new Logger\Monolog\Handler\MysqlHandler());
+// });
+
 return $app;

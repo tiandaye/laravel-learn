@@ -177,6 +177,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * Add Monolog MySQL Handler
+         */
+        Logger\Laravel\Provider\MonologMysqlHandlerServiceProvider::class,
     ],
 
     /*

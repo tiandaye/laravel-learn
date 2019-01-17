@@ -16,8 +16,32 @@ use Illuminate\Support\Facades\Redis;
 
 Route::get('/', function () {
     /**
+     * 路径函数
+     */
+    echo app_path();
+    echo '<br />';
+    echo base_path();
+    echo '<br />';
+    echo config_path();
+    echo '<br />';
+    echo database_path();
+    echo '<br />';
+    echo public_path();
+    echo '<br />';
+    echo storage_path();
+    echo '<br />';
+
+    /**
+     * Sentry的使用
+     */
+    // throw new \Exception('测试laravel-learn', 404);
+
+    /**
      * redis的使用
      */
+    // for($i = 2; $i <= 100000; $i++) {
+    //     Redis::set('user:profile:'.$i, 'lwj');
+    // }
     // 1. 字符串
     // $id = 1;
     // $flag = Redis::set('user:profile:'.$id, 'lwj'); // object(Predis\Response\Status)#644 (1) { ["payload":"Predis\Response\Status":private]=> string(2) "OK" }

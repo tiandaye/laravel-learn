@@ -124,6 +124,12 @@ Route::get('/phpinfo', function () {
 });
 
 /**
+ * 模拟队列
+ */
+Route::get('redisJob', ['uses' => 'RedisTestController@index']);
+Route::get('redisJob/run', ['uses' => 'RedisTestController@runJob']);
+
+/**
  * redis 发布与订阅
  */
 Route::get('publish', function () {

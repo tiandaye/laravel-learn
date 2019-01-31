@@ -120,6 +120,10 @@ return [
             'password' => env('REDIS_PASSWORD', null),
             'port'     => env('REDIS_PORT', 6379),
             'database' => 1,
+            // // 可以配置redis的前缀
+            // 'options' => [
+            //     'prefix' => 'tian_'
+            // ],
         ],
 
     ],

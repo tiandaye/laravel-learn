@@ -15,6 +15,7 @@
         "laravel/horizon": "^2.0",
         "laravel/tinker": "~1.0",
         "markhilton/monolog-mysql": "^0.1.6",
+        "peinhu/aetherupload-laravel": "~1.0",
         "predis/predis": "^1.1",
         "sentry/sentry-laravel": "^0.11.0"
     },

@@ -51,6 +51,15 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
+$app->when('App\Http\Controllers\HomeController')
+    ->needs('$name')
+    ->give(123456);
+
+$app->resolving(function ($object, $app) {
+    // var_dump(get_class($object));
+    // 当容器解析任何类型的对象时调用...
+});
+
 $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );

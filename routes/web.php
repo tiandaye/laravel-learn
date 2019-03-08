@@ -13,8 +13,35 @@
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Cookie;
 
 Route::get('/', function () {
+    // // 设置cookie。Cookie::queue('user',$checkLogin, 30);因为这样Cookie会自动添加到响应
+    // $cookie = Cookie::make('tian', 'lwj'); // 参数格式：$name, $value, $minutes。给下面服务
+    // return response('Hello Cookie')->cookie($cookie);
+    // return response('Hello Cookie')->cookie('test', '123', 600);
+    // $value = response('Hello Cookie')->withCookie('key', 'value', 60); // 两种方式均可，第一种方式其实就是调用了第二种方式, 推荐还是使用第一种方式
+    // // 获取cookie
+    // // 通过调用 Illuminate\Http\Request 实例对象的 cookie 方法获取 或者 request() 函数
+    // $value = $request->cookie('key');
+    // echo request()->cookie('test');
+    // // 通过 Cookie Facade 方式
+    // echo Cookie::get('tian'); // 也是通过第一种方式调用的
+    // // 删除 Cookie
+    // $cookie = Cookie::forget('tian');
+    // // 明文 Cookie
+    // 在 /app/Http/Middleware/EncryptCookies.php 中的 $except 数组中将其加入，
+    // protected $except = [
+    //     'key'
+    // ];
+    // // 永不过期
+    // Cookie::forever()
+
+    // Redis::set('tian', 'tian');
+    // dd(Redis::get('tian'));
+    // Redis::set('tian', 'lwj');
+    // dd(Redis::set('tian'));
+
     /**
      * 路径函数
      */

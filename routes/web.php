@@ -45,18 +45,18 @@ Route::get('/', function () {
     /**
      * 路径函数
      */
-    echo app_path();
-    echo '<br />';
-    echo base_path();
-    echo '<br />';
-    echo config_path();
-    echo '<br />';
-    echo database_path();
-    echo '<br />';
-    echo public_path();
-    echo '<br />';
-    echo storage_path();
-    echo '<br />';
+    // echo app_path();
+    // echo '<br />';
+    // echo base_path();
+    // echo '<br />';
+    // echo config_path();
+    // echo '<br />';
+    // echo database_path();
+    // echo '<br />';
+    // echo public_path();
+    // echo '<br />';
+    // echo storage_path();
+    // echo '<br />';
 
     /**
      * Sentry的使用
@@ -69,13 +69,28 @@ Route::get('/', function () {
     // for($i = 2; $i <= 100000; $i++) {
     //     Redis::set('user:profile:'.$i, 'lwj');
     // }
+
     // 1. 字符串
+    // // 设置
     // $id = 1;
     // $flag = Redis::set('user:profile:'.$id, 'lwj'); // object(Predis\Response\Status)#644 (1) { ["payload":"Predis\Response\Status":private]=> string(2) "OK" }
+    // // 读取
     // $user = Redis::get('user:profile:'.$id); // string(3) "lwj"
+    // // 递增
+    // Redis::incr('lwj');
+    // // dd(Redis::get('lwj')); // 1, 未定义key, 默认给key赋值为0
+    // // 递减
+    // Redis::decr('lwj1');
+    // // dd(Redis::get('lwj1')); // -1
+    // // 指定step递增
+    // Redis::incrby('lwj', 6);
+    // // dd(Redis::get('lwj'));
+    // // 指定step递减
+    // Redis::decrby('lwj1', 5);
+    // // dd(Redis::get('lwj1'));
 
     // 2. 列表
-    // 在列表头插入
+    // // 在列表头插入
     // Redis::lpush('names', 'l');
     // Redis::lpush('names', 'w');
     // Redis::lpush('names', 'j');
@@ -90,6 +105,61 @@ Route::get('/', function () {
     // Redis::lpush('names', '0');
     // $values = Redis::lrange('names', 5, 10); // array(6) { [0]=> string(1) "n" [1]=> string(1) "a" [2]=> string(1) "i" [3]=> string(1) "t" [4]=> string(1) "j" [5]=> string(1) "w" }
     // var_dump($values);die();
+    // // 栈 -> 先进后出
+    // // 左边开始压入元素
+    // Redis::lpush("list1", 'one');
+    // Redis::lpush("list1", 'two');
+    // Redis::lpush("list1", 'three');
+    // dump(Redis::lrange('list1', 0, -1));
+    // // 队列 ->先进先出
+    // Redis::rpush('rlist', 'one');
+    // Redis::rpush('rlist', 'two');
+    // Redis::rpush('rlist', 'three');
+    // dump(Redis::lrange("rlist", 0, -1));
+    // // 弹出队列和栈的元素
+    // Redis::lpop("list1");
+    // dd(Redis::lrange("list1", 0, -1));
+
+    // 3. 哈希
+    // // 单个设置
+    // Redis::hset('tianwangchong', 'name', 'hello');
+    // Redis::hset('tianwangchong', 'age', 18);
+    // // dd(Redis::hgetall('tianwangchong'));
+    // // 多个属性设置
+    // Redis::hmset('happy:lishui', ['name' => "丽水"]);
+    // Redis::hmset("fail:xiaoshou", [
+    //     "lover" => "黑嘿嘿",
+    //     'nice' => "我是xiaoshou",
+    //     '挑衅' => '来打我啊'
+    // ]);
+    // dd(Redis::hgetall("happy:huizhou"));
+    // dd(Redis::hgetall('fail:xiaoshou'));
+
+    // 4. 集合(无序集合)
+    // // 添加集合元素
+    // Redis::sAdd('huizhou',['小东','小追命','小龙女']);
+    // Redis::sAdd('xiaoshou',['小明','小追命','阳光宅猫']);
+    // // dump(Redis::smembers('huizhou'));
+    // // dd(Redis::smembers('xiaoshou'));
+    // // 获取并集
+    // dd(Redis::sunion('huizhou','xiaoshou'));
+    // // 获取交集
+    // dd(Redis::sinter("xiaoshou",'huizhou'));
+    // // 获取huizhou与xiaoshou的差集
+    // dd(Redis::sdiff("xiaoshou",'huizhou'));
+    // // 获取xiaoshou与huizhou的差集
+    // dd(Redis::sdiff('huizhou',"xiaoshou"));
+
+    // 5. 有序集合
+    // Redis::zadd("zlist", 1, "小明");
+    // Redis::zadd("zlist", 3, "惠州");
+    // Redis::zadd("zlist", 2, "加藤杰");
+    // dump(Redis::zrange("zlist", 0, -1));
+    // dump(Redis::zrevrange("zlist", 0, -1));
+
+    // 6. 其他
+    // 清空Redis数据库
+    // Redis::flushall();
 
     // 另外，你也可以通过 command 方法传递命令至服务器，它接收命令的名称作为第一个参数，第二个参数则为值的数组：
     // $values = Redis::command('lrange', ['name', 5, 10]);

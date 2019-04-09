@@ -275,3 +275,26 @@ Route::get('publish', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/**
+ * 使用Throttle中间件
+ */
+// 回传三个响应头: X-RateLimit-Limit, X-RateLimit-Remaining和 Retry-After（Retry-After头只有在达到限制次数后才会返回）。 X-RateLimit-Limit告诉我们在指定时间内允许的最大请求次数， X-RateLimit-Remaining指的是在指定时间段内剩下的请求次数， Retry-After指的是距离下次重试请求需要等待的时间（s）
+// 频率默认是一分钟60次可以通过throttle中间件的第一个参数来指定你想要的频率，重试等待时间默认是一分钟可以通过throttle中间件的第二个参数来指定你想要的分钟数。
+Route::group(['prefix'=>'api','middleware'=>'throttle:1'], function(){
+    Route::get('users', function(){
+        return \App\User::all();
+    });
+});
+// // 频次上限5
+// Route::group(['prefix'=>'api','middleware'=>'throttle:5'],function(){
+//     Route::get('users',function(){
+//         return \App\User::all();
+//     });
+// });
+// // 频次上限5，重试等待时间10分钟
+// Route::group(['prefix'=>'api','middleware'=>'throttle:5,10'],function(){
+//     Route::get('users',function(){
+//         return \App\User::all();
+//     });
+// });

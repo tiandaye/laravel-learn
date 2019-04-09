@@ -14,8 +14,34 @@
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Cookie;
+use App\Post;
 
 Route::get('/', function () {
+    /**
+     * scout 全文搜索
+     */
+    // 分页
+    dd(Post::search('content22')->paginate(2)->toArray());
+
+    // where搜索
+    dd(Post::search('content22')->get()->toArray());
+
+    // 删除记录
+    $post = Post::find(2);
+    dd($post->delete());
+
+    // 更新记录
+    $post = Post::find(1);
+    $post->user_id = 11;
+    dd($post->save()); // true
+
+    // 添加记录
+    $post = new Post();
+    $post->title = 'title1';
+    $post->content = 'content1';
+    $post->user_id = 1;
+    dd($post->save()); // true
+
     // // 设置cookie。Cookie::queue('user',$checkLogin, 30);因为这样Cookie会自动添加到响应
     // $cookie = Cookie::make('tian', 'lwj'); // 参数格式：$name, $value, $minutes。给下面服务
     // return response('Hello Cookie')->cookie($cookie);

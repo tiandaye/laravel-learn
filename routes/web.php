@@ -17,6 +17,44 @@ use Illuminate\Support\Facades\Cookie;
 use App\Post;
 
 Route::get('/', function () {
+    $shopId = 17978812896666957068;
+    var_dump($shopId);
+
+    /**
+     * 加减乘除精度缺失
+     */
+    // 加
+    $a = 0.1;
+    $b = 0.7;
+    echo $a + $b; // 0.8
+    echo "<br>";
+    $c = intval(($a + $b) * 10);
+    echo $c."<br>";
+    // 输出：7
+
+    // 减
+    $a = 100;
+    $b = 99.98;
+    $c = $a - $b;
+    echo $c."<br>";
+    // 输出：0.019999999999996(0.02)
+
+    // 乘
+    $a = 0.58;
+    $b = 100;
+    $c = intval($a * $b);
+    echo $c."<br>";
+    // 输出：57
+
+    // 除
+    $a = 0.7;
+    $b = 0.1;
+    $c = intval($a / $b);
+    echo $c."<br>";
+    // 输出：6
+    die();
+
+    echo 'hello';die();
     /**
      * scout 全文搜索
      */

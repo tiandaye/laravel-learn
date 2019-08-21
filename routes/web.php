@@ -285,6 +285,11 @@ Route::get('/phpinfo', function () {
 });
 
 /**
+ * (自定义 Facade)
+ */
+Route::get('mls/foo', ['uses' => 'MLSController@foo']);
+
+/**
  * 模拟队列
  */
 Route::get('redisJob', ['uses' => 'RedisTestController@index']);

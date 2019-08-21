@@ -181,6 +181,9 @@ return [
          * Add Monolog MySQL Handler
          */
         Logger\Laravel\Provider\MonologMysqlHandlerServiceProvider::class,
+
+        // 新建的 Provider(自定义 Facade)
+        App\Providers\MLSServiceProvider::class,
     ],
 
     /*
@@ -230,6 +233,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // 我们的自定义 Facade(自定义 Facade)
+        // 注意，aliases，也就是” 别名 “部分的” MLS“可以是任意我们喜欢的名字，它只是用来指代我们自定义的 Facade
+        'MLS' => App\Custom\Facades\MLS::class,
     ],
 
 ];

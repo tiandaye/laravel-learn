@@ -58,6 +58,7 @@ $app->when('App\Http\Controllers\HomeController')
 $app->resolving(function ($object, $app) {
     // var_dump(get_class($object));
     // 当容器解析任何类型的对象时调用...
+    // 服务容器每次解析对象会触发一个事件
 });
 
 $response = $kernel->handle(

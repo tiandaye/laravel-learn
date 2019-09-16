@@ -15,8 +15,27 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Cookie;
 use App\Post;
+// use QrCode;
 
 Route::get('/', function () {
+    return view('welcome');
+
+    /**
+     * qrcode
+     */
+    // // 基本用法
+    // echo QrCode::generate('Hello,LaravelAcademy!');
+    // echo QrCode::encoding('UTF-8')->generate('你好，Laravel学院！');
+    // // 修改尺寸
+    // echo QrCode::size(100)->generate('Hello,LaravelAcademy!');
+    // // 修改背景色和前景色
+    // // echo QrCode::format('png')->size(100)->color(255,0,255)->backgroundColor(255,255,0)->generate('Hello,LaravelAcademy!', public_path('qrcodes/qrcode.png'));
+    // echo QrCode::phoneNumber('18888888888');
+    // echo QrCode::encoding('UTF-8')->SMS('18888888888','Laravel学院致力于提供优质Laravel中文学习资源');
+    // echo QrCode::size(200)->generate('http://laravelacademy.org');
+    // die();
+
+
     $shopId = 17978812896666957068;
     var_dump($shopId);
 

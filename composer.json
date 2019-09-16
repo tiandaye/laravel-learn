@@ -20,7 +20,9 @@
         "markhilton/monolog-mysql": "^0.1.6",
         "peinhu/aetherupload-laravel": "~1.0",
         "predis/predis": "^1.1",
-        "sentry/sentry-laravel": "^0.11.0"
+        "sentry/sentry-laravel": "^0.11.0",
+        "simplesoftwareio/simple-qrcode": "^2.0",
+        "tymon/jwt-auth": "1.0.0-rc.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

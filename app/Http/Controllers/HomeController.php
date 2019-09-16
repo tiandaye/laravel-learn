@@ -15,8 +15,8 @@ class HomeController extends Controller
      */
     public function __construct($name)
     {
-        $this->name = $name;
-        // $this->middleware('auth');
+        // $this->name = $name;
+        $this->middleware('auth');
     }
 
     /**
@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        echo $this->name;die();
+        // echo $this->name;
         return view('home');
     }
 }
